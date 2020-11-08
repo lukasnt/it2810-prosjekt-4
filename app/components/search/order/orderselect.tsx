@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { SearchParams } from '../../../redux/reducers/searchparams';
 import { AppState } from '../../../redux/store';
 import { setOrderField } from '../../../redux/actions/searchparams';
-import { Button, Divider, Menu, Provider } from 'react-native-paper';
-import { View } from 'react-native';
+import { Button, Menu, RadioButton, Text } from 'react-native-paper';
+import { View, StyleSheet, Modal } from 'react-native';
 
 interface OrderSelectProps {
     orderLabels: Array<string>;
@@ -40,32 +40,26 @@ const OrderSelect : React.FunctionComponent<OrderSelectProps> = ({ orderLabels, 
         dispatch(setOrderField(event.target.value as string))
     }
 
-    const openMenu = () => setVisible(true);
-    const closeMenu = () => setVisible(false);
-
     return (
-        <Provider>
-            <View
-                style={{
-                paddingTop: 50,
-                flexDirection: 'row',
-                justifyContent: 'center'
-            }}
-            >
-            
-                <Menu
-                    visible={visible}
-                    onDismiss={closeMenu}
-                    anchor={<Button onPress={openMenu}>Show menu</Button>}
-                >
-                    <Menu.Item onPress={() => {}} title="Item 1" />
-                    <Menu.Item onPress={() => {}} title="Item 2" />
-                    <Divider />
-                    <Menu.Item onPress={() => {}} title="Item 3" />
-                </Menu>
-            </View>
-        </Provider>
+        <View>
+             <Button mode="outlined"
+                        onPress={() => setVisible(!visible)}>
+                    {visible ? "Hide Sort Orders" : "Show Sort Orders"}
+            </Button>
+
+            {visible &&
+            <RadioButton.Group onValueChange={value => setValue(value)} value={value}>
+                {orderValues.map((value : string) => {
+                    const label : string = orderLabels[orderValues.indexOf(value)];
+                    return (
+                        <RadioButton.Item label={label} value={value} />
+                    );
+                })}
+            </RadioButton.Group>
+            }
+        </View>
     );
 };
+
 
 export default OrderSelect;

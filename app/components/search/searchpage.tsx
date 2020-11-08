@@ -5,12 +5,14 @@ import { executeSearch } from '../../utils/ajax';
 import { setPage } from '../../redux/actions/searchparams';
 import { store } from "../../redux/store";
 import { ScrollView, View } from 'react-native';
-import { ActivityIndicator, Button } from 'react-native-paper';
+import { ActivityIndicator, Button, Provider, ToggleButton } from 'react-native-paper';
 import MovieList from '../movie/movielist';
 import { testMovies } from '../movie/testmovies';
 import { connect } from 'react-redux';
 import SearchBar from './searchbar';
 import OrderSelect from './order/orderselect';
+import GenreList from './order/genrelist';
+import OrderDirSelect from './order/orderdirselect';
 
 interface SearchPageProps {
     appState : AppState;
@@ -22,15 +24,7 @@ class SearchPage extends React.Component<SearchPageProps, {showFilters : boolean
     filterType : string  = "Genre";
     filterValues : Array<string>  =["Action", "Adventure", "Comedy", "Crime", "Documentary", "Drama", "Fantasy", "Horror", "Mystery", "Romance", "Sci-Fi", "Thriller", "Western"];
     orderLabels : Array<string>  = ["Relevance", "Title", "Release Year", "Runtime Minutes", "Vote Average", "Vote Count"];
-    orderValues : Array<string>  = ["relevance", "primaryTitle", "startYear", "runtimeMinutes", "voteAverage", "voteCount"];
-    languageCodes : Array<string> = ["kk" ,"dv" ,"or" ,"ur" ,"it" ,"sd" ,"sa" ,"et" ,"ak" ,"se" ,"bi" ,"ss" ,"bm" ,"am" ,"lb" ,"sv" ,"hr" ,"lo" ,"nb" ,"bs" ,"mk" ,"gu" ,"hz" ,"mo" ,"cr" ,"iu" ,"yo" ,"pl" ,"ht" ,"id" ,"tl" ,"af" ,"wo" ,"ce" ,"fo" ,"sr" ,"th" ,"fr" ,"st" ,"nn" ,"ka" ,"rm" ,"pa" ,"en" ,"mt" ,"ko" ,"bn" ,"fa" ,"mi" ,"tg" ,"te" ,"sl" ,"uk" ,"be" ,"eo" ,"sw" ,"ca" ,"cs" ,"zu" ,"qu" ,"as" ,"ha" ,"sq" ,"gl" ,"az" ,"si" ,"km" ,"ba" ,"el", "sn", "ay" ,"ty" ,"yi" ,"so" ,"dz" ,"nl" ,"de" ,"ff" ,"fi" ,"lv" ,"tk" ,"ch" ,"kg" ,"sm" ,"la" ,"rw" ,"eu" ,"sh" ,"ne" ,"mr" ,"ta" ,"ln" ,"ru" ,"hu" ,"sk" ,"zh" ,"fy" ,"pt" ,"ja" ,"tr" ,"ml" ,"ab" ,"xh" ,"tt" ,"mn" ,"hi" ,"hy" ,"he" ,"lt" ,"ps" ,"gd" ,"da" ,"ar" ,"no" ,"ms" ,"kn" ,"ro" ,"bg" ,"ku" ,"ky" ,"my" ,"uz" ,"vi" ,"ug" ,"jv" ,"ga" ,"cy" ,"bo" ,"mg" ,"is" ,"mh", "es" ,"ti"].sort();
-    /*
-    languageOptions : Array<Language> = this.languageCodes.map(code => {
-        const langSubtag : Subtag | null = tags.language(code);
-        return {code: code, title: langSubtag == null ? "" : langSubtag.descriptions()[0]};
-    });
-    */
-    
+    orderValues : Array<string>  = ["relevance", "primaryTitle", "startYear", "runtimeMinutes", "voteAverage", "voteCount"]; 
 
     constructor(props : SearchPageProps) {
         super(props);
@@ -63,37 +57,29 @@ class SearchPage extends React.Component<SearchPageProps, {showFilters : boolean
         let searchResult = this.props.appState.searchResult;
         return (
             <ScrollView>
-                {this.state.showFilters &&
-                    <View>
-                        {
-                        /*
-                        <GenreList filtertype={this.filterType} filters={this.filterValues}/>
-                        <RuntimeList filtertype={"Runtime Minutes"}/>
-                        <LanguageList filtertype={"Language"} options={this.languageOptions}/>
-                        */
-                        }
-                    </View>
-                }
+                
                 <View>
-                    <View>
-                        <Button mode="outlined"
-                                onPress={() => {this.setState({showFilters : !this.state.showFilters})}}>
-                            {this.state.showFilters ? "Hide filters" : "Show filters"}
-                        </Button>
-                        <SearchBar />
-                        <ScrollView>
-                            {
-                                <OrderSelect orderValues={this.orderValues} orderLabels={this.orderLabels} defaultValue="voteCount"/>
-                                /*
-                                <OrderDirSelect orderDir={searchParams.orderDir} />
-                                */
-                            }
-                        </ScrollView>
-                    </View>
+                    <Button mode="outlined"
+                            onPress={() => {this.setState({showFilters : !this.state.showFilters})}}>
+                        {this.state.showFilters ? "Hide filters" : "Show filters"}
+                    </Button>
+                    
+                    {this.state.showFilters &&
+                        <View>
+                            <GenreList filtertype={this.filterType} filters={this.filterValues}/>
+                        </View>
+                    }
+                    
+                    <OrderSelect orderValues={this.orderValues} orderLabels={this.orderLabels} defaultValue="voteCount"/>
+                    <OrderDirSelect orderDir={1}/>
+                    
+                    <SearchBar />
+
                     <MovieList data={testMovies} />
                     {searchParams.loading ? <ActivityIndicator size={250}/> : null}
                     {/*<MovieList data={ searchParams.loading ? [] : (searchResult?.movies != null ? searchResult.movies : [])}/> */}
                 </View>
+                
             </ScrollView>
         );
     }
