@@ -29,6 +29,6 @@ app.use(attachUser);
 // Use the endpoints from the controllers
 app.use("/api", router);
 
-app.listen(8080, () => {
-    console.log("App listening at http://localhost:8080");
+app.listen(3000, () => {
+    console.log("App listening at http://localhost:3000");
 });
