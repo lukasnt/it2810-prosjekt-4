@@ -3,7 +3,9 @@ import React, { useState, useEffect} from 'react';
 import { View, StyleSheet, ImageBackground } from 'react-native';
 import { Headline, Paragraph, ProgressBar, Subheading, Text, Title } from 'react-native-paper';
 import { Rating } from 'react-native-ratings';
+import { backendURL } from '../../App';
 import { Movie } from '../../redux/reducers/searchresult';
+import { getRatingColor } from './moviecard';
 
 const MoviePage : React.FunctionComponent = () => {
 
@@ -37,7 +39,7 @@ const MoviePage : React.FunctionComponent = () => {
     // and sends a request for that movie to the backend
     // Then updates the state of the movie that it gets
     useEffect(() => {
-        fetch('http://localhost:8080/api/movie/single/' + route.params.tconst)
+        fetch(backendURL + '/api/movie/single/' + route.params.tconst)
             .then(res => res.json())
             .then(data => {
                 setMovie(data);
@@ -77,18 +79,18 @@ const MoviePage : React.FunctionComponent = () => {
 
     return (
         <View style={styles.container}>
-            <ImageBackground source={{ uri: "https://image.tmdb.org/t/p/original/cKTqxeN8H8waDbPyHB0jZVskLxD.jpg" }} style={styles.image}>
+            <ImageBackground source={{ uri: movie.posterPath == "" ? "https://jooinn.com/images/black-screen-4.jpg" : movie.posterPath }} style={styles.image}>
                 <View style={styles.content}>
 
-                    <Text style={styles.headline}>Inside Out </Text>
-                    <Subheading style={styles.white}>Adventure,Animation,Comedy • 1 h 35 m </Subheading>      
-                    <Subheading style={styles.white}>(3.95) • 15506 ratings </Subheading>
+                    <Text style={styles.headline}>{movie.primaryTitle}</Text>
+                    <Subheading style={styles.white}>{movie.genres  + ' • ' + ((+movie.runtimeMinutes-(+movie.runtimeMinutes % 60)) / 60) + ' h ' + (+movie.runtimeMinutes % 60) + ' m'}</Subheading>      
+                    <Subheading style={styles.white}>{"Average Rating (" + movie.voteAverage + ")" + " • " + movie.voteCount + " ratings"} </Subheading>
                     <ProgressBar 
-                        progress={3.95 / 5} 
-                        color="#00ff00" 
+                        progress={movie.voteAverage / 10} 
+                        color={getRatingColor(movie.voteAverage)} 
                         style={{margin: 10}}/>
-                    <Title style={styles.white}>Overview </Title>
-                    <Paragraph style={styles.white}>Growing up can be a bumpy road, and it's no exception for Riley, who is uprooted from her Midwest life when her father starts a new job in San Francisco. Riley's guiding emotions— Joy, Fear, Anger, Disgust and Sadness—live in Headquarters, the control centre inside Riley's mind, where they help advise her through everyday life and tries to keep things positive, but the emotions conflict on how best to navigate a new city, house and school. </Paragraph>
+                    <Title style={styles.white}>Overview</Title>
+                    <Paragraph style={styles.white}>{movie.overview}</Paragraph>
                 </View>
             </ImageBackground>
         </View>

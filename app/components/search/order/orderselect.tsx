@@ -24,35 +24,31 @@ const OrderSelect : React.FunctionComponent<OrderSelectProps> = ({ orderLabels, 
     // State for the visibilty of the menu
     const [visible, setVisible] = useState(false);
 
-    
-    // Takes the orderLabels and orderValues from props and generates JSX that is a list of MenuItems
-    function generateMenuItems() : JSX.Element[] {
-        let jsx : JSX.Element[] = []; 
-        for (let i : number = 0; i < orderValues.length; i++) {
-            jsx.push(<Menu.Item onPress={() => {}} title={orderValues[i]} key={i} />)
-        }
-        return jsx;
-    }
-    
     // When the Select changes, the local state value and global state value is updated
-    function handleChange(event: React.ChangeEvent<{ value: any }>) : void {
-        setValue(event.target.value as string);
-        dispatch(setOrderField(event.target.value as string))
+    function handleChange(value : string) : void {
+        setValue(value);
     }
 
     return (
         <View>
              <Button mode="outlined"
-                        onPress={() => setVisible(!visible)}>
-                    {visible ? "Hide Sort Orders" : "Show Sort Orders"}
+                        onPress={() => {
+                            if (visible) dispatch(setOrderField(value));
+                            setVisible(!visible);
+                        }}>
+                    {visible ? "Apply Sort Order" : "Show Sort Orders"}
             </Button>
 
             {visible &&
-            <RadioButton.Group onValueChange={value => setValue(value)} value={value}>
+            <RadioButton.Group onValueChange={value => handleChange(value)} value={value}>
                 {orderValues.map((value : string) => {
                     const label : string = orderLabels[orderValues.indexOf(value)];
                     return (
-                        <RadioButton.Item label={label} value={value} />
+                        <RadioButton.Item 
+                            label={label} 
+                            value={value}
+                            key={label}
+                        />
                     );
                 })}
             </RadioButton.Group>

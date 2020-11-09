@@ -22,7 +22,7 @@ export function searchParamsReducer(state : SearchParams = {
     orderField : "voteCount",
     orderDir : -1,
     page : 1,
-    pageSize : 18,
+    pageSize : 5,
     loading: true
 }, action: SearchParamsActions) { 
 

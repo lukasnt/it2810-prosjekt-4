@@ -45,3 +45,5 @@ const styles = StyleSheet.create({
     marginTop: statusBarHeight + "px"
   },
 });
+
+export const backendURL : string = "http://it2810-24.idi.ntnu.no:3000";

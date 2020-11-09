@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Dispatch } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppState } from '../../../redux/store';
 import { SearchParams } from '../../../redux/reducers/searchparams';
 import { setGenres } from '../../../redux/actions/searchparams';
-import { Checkbox, Subheading } from 'react-native-paper';
+import { Button, Checkbox, Subheading } from 'react-native-paper';
 import { View } from 'react-native';
 
 export interface FilterProps {
@@ -18,8 +18,11 @@ const GenreList : React.FunctionComponent<FilterProps> = ({filtertype, filters} 
     const dispatch : Dispatch<any> = useDispatch();
 
     // Array of which genres are enabled in the filter
-    const [checked, setChecked] = React.useState(searchParams.genres.map(name => filters.indexOf(name)));
+    const [checked, setChecked] = useState(searchParams.genres.map(name => filters.indexOf(name)));
     
+    // State if the genres are visible
+    const [visible, setVisible] = useState(false);
+
     // Updates the checked-array when any of the checkboxes have changed value
     function handleToggle(value: number) {
         const currentIndex = checked.indexOf(value);
@@ -32,25 +35,33 @@ const GenreList : React.FunctionComponent<FilterProps> = ({filtertype, filters} 
         }
 
         setChecked(newChecked);
-        dispatch(setGenres(newChecked.map(index => filters[index])));
     };
 
     
     return (
         <View>
-            <Subheading> {filtertype} </Subheading>
-            {filters.map((filter:string) => {
-                const index = filters.indexOf(filter);
-                return (
-                    <View>
+            <Button mode="outlined"
+                    onPress={() => {
+                        setVisible(!visible)
+                        if (visible) dispatch(setGenres(checked.map(index => filters[index])));
+                    }}>
+                {visible ? "Apply filters" : "Show filters"}
+            </Button>
+            {visible &&
+            <View>
+                {filters.map((filter:string) => {
+                    const index = filters.indexOf(filter);
+                    return (
                             <Checkbox.Item
+                                key={index}
                                 label={filter}
                                 status={checked.indexOf(index) !== -1 ? "checked" : "unchecked"}
                                 onPress={() => handleToggle(index)}
                             />
-                    </View>
-                );
-            })}
+                    );
+                })}
+            </View>
+            }
         </View>
     );
 };

@@ -16,27 +16,6 @@ const MovieCard : React.FunctionComponent<MovieCardProps> = ({ tconst, title, im
 
     const navigation = useNavigation();
 
-    function getRatingColor(rating : number) : string {
-        if (rating > 7.5)
-            return "green";
-        if (rating > 5)
-            return "yellow";
-        if (rating > 2.5)
-            return "orange";
-        else
-            return "red";
-        /*
-        const r : number = Math.floor(((10 - rating) / 10) * 255);
-        const g : number = Math.floor((rating / 10) * 255);
-
-        const red : string   = (r < 16 ? "0" : "") + r.toString(16);
-        const green : string = (g < 16 ? "0" : "") + g.toString(16);
-        
-        return "#" + red + green + "00";
-        */
-
-    }
-
     return (
         <Card 
             style={{margin: 10, paddingBottom: 15}}
@@ -44,7 +23,7 @@ const MovieCard : React.FunctionComponent<MovieCardProps> = ({ tconst, title, im
             <TouchableRipple
                 onPress={() => {
                     navigation.navigate("Movie", {
-                        tconst: "123"
+                        tconst: tconst
                     });
                 }}
                 rippleColor="rgba(0, 0, 0, .32)"
@@ -67,3 +46,14 @@ const MovieCard : React.FunctionComponent<MovieCardProps> = ({ tconst, title, im
 };
 
 export default MovieCard;
+
+export function getRatingColor(rating : number) : string {
+    if (rating > 7.5)
+        return "green";
+    if (rating > 5)
+        return "yellow";
+    if (rating > 2.5)
+        return "orange";
+    else
+        return "red";
+}

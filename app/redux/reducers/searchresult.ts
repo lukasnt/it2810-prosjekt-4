@@ -28,6 +28,13 @@ export function searchResultReducer(state : SearchResult | null = null, action: 
     switch (action.type) {
         case "SET_SEARCH_RESULT":
             return state = action.payload;
+        case "APPEND_SEARCH_RESULT":
+            if (state != null) {
+                state.movies.push(...action.payload.movies);
+                state.movies = state.movies.filter((value, index, array) => 
+                    array.findIndex(v => v.tconst === value.tconst) === index);
+                return state;
+            }
         case "CLEAR_SEARCH_RESULT":
             return state = { movies: [], pages: 0 };
         default:

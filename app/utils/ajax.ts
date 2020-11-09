@@ -1,8 +1,8 @@
 import { store } from "../redux/store";
 import { setLoading } from "../redux/actions/searchparams";
-import { setSearchResult } from "../redux/actions/searchresult";
+import { appendSearchResult, setSearchResult } from "../redux/actions/searchresult";
 import { SearchParams } from "../redux/reducers/searchparams";
-
+import { backendURL } from "../App";
 
 
 // Taken from MDN
@@ -34,8 +34,10 @@ let callID : number = 0;
 // Then it takes the result and sets the SearchResult state (which will be reflected in SearchPage)
 export async function executeSearch(state : SearchParams) : Promise<void> {
     if (!state.loading) store.dispatch(setLoading(true));
+    
+    const currentPage : number = state.page;
     callID++;
-    return fetch("http://localhost:8080/api/movie/search?" + 
+    return fetch(backendURL + "/api/movie/search?" + 
         "query=" + state.query + "&" +
         "filters=" + state.genres + "&" +
         "language=" + state.language + "&" +
@@ -48,7 +50,12 @@ export async function executeSearch(state : SearchParams) : Promise<void> {
         .then(res => res.json())
         .then(data => {
             if (data.callID === callID) {
-                store.dispatch(setSearchResult(data.result));
+                console.log(currentPage);
+                if (currentPage > 1)
+                  store.dispatch(appendSearchResult(data.result));
+                else
+                  store.dispatch(setSearchResult(data.result));
+                
                 store.dispatch(setLoading(false));
             }
         });
