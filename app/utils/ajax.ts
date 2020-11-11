@@ -2,8 +2,9 @@ import { store } from "../redux/store";
 import { setLoading } from "../redux/actions/searchparams";
 import { appendSearchResult, setSearchResult } from "../redux/actions/searchresult";
 import { SearchParams } from "../redux/reducers/searchparams";
-import { backendURL } from "../App";
 
+
+export const backendURL : string = "http://it2810-24.idi.ntnu.no:3000";
 
 // Taken from MDN
 // Example POST method implementation:

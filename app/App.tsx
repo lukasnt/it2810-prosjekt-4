@@ -1,13 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
-import SearchPage from './components/search/searchpage';
+import { StyleSheet } from 'react-native';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
 import Constants from 'expo-constants';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import MoviePage from './components/movie/moviepage';
+import SearchPage from "./components/search/searchpage";
 
 const statusBarHeight : number = Constants.statusBarHeight
 
@@ -45,5 +44,3 @@ const styles = StyleSheet.create({
     marginTop: statusBarHeight + "px"
   },
 });
-
-export const backendURL : string = "http://it2810-24.idi.ntnu.no:3000";

@@ -1,10 +1,9 @@
 import { useRoute } from '@react-navigation/native';
 import React, { useState, useEffect} from 'react';
 import { View, StyleSheet, ImageBackground } from 'react-native';
-import { Headline, Paragraph, ProgressBar, Subheading, Text, Title } from 'react-native-paper';
-import { Rating } from 'react-native-ratings';
-import { backendURL } from '../../App';
+import { Paragraph, ProgressBar, Subheading, Text, Title } from 'react-native-paper';
 import { Movie } from '../../redux/reducers/searchresult';
+import { backendURL } from '../../utils/ajax';
 import { getRatingColor } from './moviecard';
 
 const MoviePage : React.FunctionComponent = () => {
