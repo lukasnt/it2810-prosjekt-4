@@ -60,5 +60,13 @@ export function searchParamsReducer(state : SearchParams = {
             newState = state;
             break;
     }
-    return newState;
+    if (!searchParamsEquals(state, newState)) 
+        return newState;
+    else
+        return state;
+}
+
+// Just a simple equal check so that it doesn't detect a new change when no actual value have changed
+function searchParamsEquals(param1 : SearchParams, param2 : SearchParams) : boolean {
+    return JSON.stringify(param1) === JSON.stringify(param2);
 }
