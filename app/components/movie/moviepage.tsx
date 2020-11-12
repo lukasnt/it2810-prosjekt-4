@@ -48,41 +48,12 @@ const MoviePage : React.FunctionComponent = () => {
             })
     }, [route.params.tconst]);
 
-    const styles = StyleSheet.create({
-        container: {
-            flex: 1,
-            flexDirection: "column"
-        },
-        image: {
-            flex: 1,
-            resizeMode: "cover",
-            justifyContent: "center",
-            backgroundColor: "black",
-            opacity: 1
-        },
-        content: {
-            backgroundColor: "#000000a0",
-            opacity: 1,
-            flex: 1,
-            justifyContent: "center",
-            padding: 5
-        },
-        white: {
-            color: "white",
-        },
-        headline: {
-            color: "white",
-            fontSize: 42,
-        }
-    });
-
     return (
         <View style={styles.container}>
             <ImageBackground source={{ uri: movie.posterPath == "" ? "https://jooinn.com/images/black-screen-4.jpg" : movie.posterPath }} style={styles.image}>
                 <View style={styles.content}>
-
                     <Text style={styles.headline}>{movie.primaryTitle}</Text>
-                    <Subheading style={styles.white}>{movie.genres  + ' • ' + ((+movie.runtimeMinutes-(+movie.runtimeMinutes % 60)) / 60) + ' h ' + (+movie.runtimeMinutes % 60) + ' m'}</Subheading>      
+                    <Subheading style={styles.white}>{movie.genres + ' • ' + ((+movie.runtimeMinutes-(+movie.runtimeMinutes % 60)) / 60) + ' h ' + (+movie.runtimeMinutes % 60) + ' m'}</Subheading>      
                     <Subheading style={styles.white}>{"Average Rating (" + movie.voteAverage + ")" + " • " + movie.voteCount + " ratings"} </Subheading>
                     <ProgressBar 
                         progress={movie.voteAverage / 10} 
@@ -95,5 +66,33 @@ const MoviePage : React.FunctionComponent = () => {
         </View>
     );
 };
+
+const styles : any = StyleSheet.create({
+    container: {
+        flex: 1,
+        flexDirection: "column"
+    },
+    image: {
+        flex: 1,
+        resizeMode: "cover",
+        justifyContent: "center",
+        backgroundColor: "black",
+        opacity: 1
+    },
+    content: {
+        backgroundColor: "#000000a0",
+        opacity: 1,
+        flex: 1,
+        justifyContent: "center",
+        padding: 5
+    },
+    white: {
+        color: "white",
+    },
+    headline: {
+        color: "white",
+        fontSize: 42,
+    }
+});
 
 export default MoviePage;

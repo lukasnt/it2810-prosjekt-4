@@ -7,7 +7,7 @@ import { View } from 'react-native';
 import { connect } from 'react-redux';
 import SearchBar from './searchbar';
 import OrderSelect from './order/orderselect';
-import GenreList from './order/genrelist';
+import GenreList from './filters/genrelist';
 import OrderDirSelect from './order/orderdirselect';
 
 interface SearchPageHeaderProps {
