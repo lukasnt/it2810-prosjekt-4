@@ -12,6 +12,8 @@ Deretter skann QR koden som kommer opp med den mobilen som det skal kjøres på.
 
 (Det tar sikkert litt tid før alt lastes inn)
 
+### 3.
+For enda bedre ytelse kan man også kjøre i production mode (Dette er ikke nødvendig da, men blir litt kjappere)
 
 
 ## React Native
@@ -39,11 +41,11 @@ Backend fra prosjekt 3 har blitt gjenbrukt og satt opp på en VM slik at den kan
 
 ## Manuell e2e testing
 
-Sjekkliste
-Sjekke at appen åpnes korrekt og det er ingen error som kommer opp.
-Sjekke at layouten fungerer og at alle elementene vises der de skal.
-Sjekke at alle filmene vises og at skrolling til bunnen laster inn nye filmer, dette gjør jeg for 3 innlastinger.
-Sjekke at søkefunksjonaliteten fungerer. Her bruker jeg eksempel-queryet «batman».
-Sjekke at endringen av sortering fungerer. Her endrer jeg til «release» (Dette gjør jeg etter at jeg har satt queryet)
-Sjekke at endre retning på sortering fungerer ved å trykke på opp-pilen og så ned pilen.
-Sjekke at filtrering fungerer. Her  
+Den manuelle e2e testingen foregår ved at man manuelt kjører appen slik som vist øverst i dokumentasjonen. Deretter går man igjennom alle punktene i sjekklisten nedenfor og ser om man får det resultatet som er beskrevet som forventet. Dette har blitt gjort på android-enhet Moto G (5S) Plus og på en iOS simulator. For enda grundigere testing burde det kanskje også testes på andre mobile enheter. F.eks mindre kraftigere enheter, enheter med svært liten skjerm eller svært stor skjerm osv.
+
+### Sjekkliste
+* Sjekke at appen åpnes korrekt og det er ingen error som kommer opp.
+* Sjekke at layouten fungerer og at alle elementene vises der de skal.
+* Sjekke at alle filmene vises og at skrolling til bunnen laster inn nye filmer, dette gjør jeg for 3 innlastinger.
+* Sjekke at søkefunksjonaliteten fungerer. Her bruker jeg eksempel-queryet «batman».
+* Sjekke at endringen av sortering fungerer. Her endrer jeg til «release» (Dette gjør jeg etter at jeg har satt queryet)
