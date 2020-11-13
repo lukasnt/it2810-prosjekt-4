@@ -1,5 +1,18 @@
 # Prosjekt 4
 
+## Hvordan kjøre appen?
+1.
+Kjøre følgende kommando i terminalvinduet:
+
+`expo start`
+
+2.
+Deretter skann QR koden som kommer opp med den mobilen som det skal kjøres på.
+
+(Det tar sikkert litt tid før alt lastes inn)
+
+
+
 ## React Native
 React Native applikasjonen er satt opp ved å kjøre expo init skriptet ved bruke av expo-cli. TypeScript er brukt som programmeringsspråk i utviklingen. Alle react komponenter er plassert i components-mappen og er ytterligere gruppert i undermapper etter kategorierer (movie og search).
 
