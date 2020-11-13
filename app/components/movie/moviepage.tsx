@@ -53,8 +53,12 @@ const MoviePage : React.FunctionComponent = () => {
             <ImageBackground source={{ uri: movie.posterPath == "" ? "https://jooinn.com/images/black-screen-4.jpg" : movie.posterPath }} style={styles.image}>
                 <View style={styles.content}>
                     <Text style={styles.headline}>{movie.primaryTitle}</Text>
-                    <Subheading style={styles.white}>{movie.genres + ' • ' + ((+movie.runtimeMinutes-(+movie.runtimeMinutes % 60)) / 60) + ' h ' + (+movie.runtimeMinutes % 60) + ' m'}</Subheading>      
-                    <Subheading style={styles.white}>{"Average Rating (" + movie.voteAverage + ")" + " • " + movie.voteCount + " ratings"} </Subheading>
+                    <Subheading style={styles.white}>
+                        {movie.genres + ' • ' + movie.startYear + ' • ' + ((+movie.runtimeMinutes-(+movie.runtimeMinutes % 60)) / 60) + ' h ' + (+movie.runtimeMinutes % 60) + ' m'}
+                    </Subheading>      
+                    <Subheading style={styles.white}>
+                        {"Average Rating (" + movie.voteAverage + ")" + " • " + movie.voteCount + " ratings"}
+                    </Subheading>
                     <ProgressBar 
                         progress={movie.voteAverage / 10} 
                         color={getRatingColor(movie.voteAverage)} 
