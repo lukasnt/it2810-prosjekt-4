@@ -1,10 +1,18 @@
 # Prosjekt 4
 
 ## Hvordan kjøre appen?
-1. Kjøre følgende kommando i terminalvinduet:
+
+1. 
+
+Kjøre følgende kommando i terminalvinduet:
+
 `expo start`
 
-2. Deretter skann QR koden som kommer opp med den mobilen som det skal kjøres på. (Det tar sikkert litt tid før alt lastes inn)
+2. 
+
+Deretter skann QR koden som kommer opp med den mobilen som det skal kjøres på. 
+
+(Det tar sikkert litt tid før alt lastes inn)
 
 
 
