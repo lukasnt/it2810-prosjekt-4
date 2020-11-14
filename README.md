@@ -2,17 +2,22 @@
 
 ## Hvordan kjøre appen?
 
-### 1.
+### 1. Installere avhengigheter
+Kjør følgende kommandi i terminalvinduet når man er under /app:
+
+`npm install`
+
+### 2. Starte Expo
 Kjøre følgende kommando i terminalvinduet:
 
 `expo start`
 
-### 2.
+### 3. Kjøre på mobilen
 Deretter skann QR koden som kommer opp med den mobilen som det skal kjøres på. 
 
 (Det tar sikkert litt tid før alt lastes inn)
 
-### 3.
+### 4. Production mode
 For enda bedre ytelse kan man også kjøre i production mode (Dette er ikke nødvendig da, men blir litt kjappere)
 
 
