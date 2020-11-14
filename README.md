@@ -41,11 +41,13 @@ Backend fra prosjekt 3 har blitt gjenbrukt og satt opp på en VM slik at den kan
 
 ## Manuell e2e testing
 
-Den manuelle e2e testingen foregår ved at man manuelt kjører appen slik som vist øverst i dokumentasjonen. Deretter går man igjennom alle punktene i sjekklisten nedenfor og ser om man får det resultatet som er beskrevet som forventet. Dette har blitt gjort på android-enhet Moto G (5S) Plus og på en iOS simulator. For enda grundigere testing burde det kanskje også testes på andre mobile enheter. F.eks mindre kraftigere enheter, enheter med svært liten skjerm eller svært stor skjerm osv.
+Den manuelle e2e testingen foregår ved at man manuelt kjører appen slik som vist øverst i dokumentasjonen. Deretter går man igjennom alle punktene i sjekklisten nedenfor og ser om man får det resultatet som er beskrevet som forventet opprørsel. Dette har blitt gjort på android-enhet Moto G (5S) Plus og på en iOS simulator. For enda grundigere testing burde det kanskje også testes på andre mobile enheter. F.eks mindre kraftigere enheter, enheter med svært liten skjerm eller svært stor skjerm osv.
 
 ### Sjekkliste
 * Sjekke at appen åpnes korrekt og det er ingen error som kommer opp.
 * Sjekke at layouten fungerer og at alle elementene vises der de skal.
-* Sjekke at alle filmene vises og at skrolling til bunnen laster inn nye filmer, dette gjør jeg for 3 innlastinger.
-* Sjekke at søkefunksjonaliteten fungerer. Her bruker jeg eksempel-queryet «batman».
-* Sjekke at endringen av sortering fungerer. Her endrer jeg til «release» (Dette gjør jeg etter at jeg har satt queryet)
+* Sjekke at alle filmene vises og at skrolling til bunnen laster inn nye filmer, dette gjør man for 3 innlastinger. Det forventes selvfølgelig at det skal lastes inn flere filmer i listen.
+* Sjekke at søkefunksjonaliteten fungerer. Her bruker man eksempel-queryet «batman».
+* Sjekke at endringen av sortering fungerer. Her endrer man til «release» (Dette gjør man etter at man har satt queryet). Her forventes man å få batman filmer som ikke enda å ha kommet ut først.
+* Sjekke at endring av sorterings-retning fungerer. Her endrer man til pil opp. Det forventes at det skal nå komme gamle "batman" filmer.
+* Sjekke at filtrering fungerer. Først endrer man de andre instillingene slik det var når appen startet. Deretter setter man filterne til "Action" og "Adventure". Her forventes det selvføgelig at alle filmene ihvertfall har sjangeren "Action" og "Adventure".
