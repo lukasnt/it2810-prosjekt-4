@@ -29,11 +29,6 @@ const MoviePage : React.FunctionComponent = () => {
         overview: ""
     });
 
-    // Other states that is more convinient to have in single values
-    const [voteAverage, setVoteAverage] = useState('');
-    const [voteCount, setVoteCount] = useState('');
-    const [myRating, setMyRating] = useState('');
-
     // When the component is mounted, it takes the id (tconst) from the url 
     // and sends a request for that movie to the backend
     // Then updates the state of the movie that it gets
@@ -42,10 +37,7 @@ const MoviePage : React.FunctionComponent = () => {
             .then(res => res.json())
             .then(data => {
                 setMovie(data);
-                setVoteCount(data.voteCount);
-                setVoteAverage(data.voteAverage);
-                setMyRating('');
-            })
+            });
     }, [route.params.tconst]);
 
     return (

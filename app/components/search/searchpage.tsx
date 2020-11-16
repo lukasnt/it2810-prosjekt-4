@@ -13,6 +13,7 @@ interface SearchPageProps {
     appState : AppState;
 }
 
+// Have chosen to make this a Class-component so that I can take use of the shouldComponentUpdate method
 class SearchPage extends React.Component<SearchPageProps> {
 
     // executes search when component have mounted
@@ -22,7 +23,7 @@ class SearchPage extends React.Component<SearchPageProps> {
 
     // If SearchResult is unchanged and only SearchParams is changed, it should not rerender all the movies
     // The only exception is loading
-    shouldComponentUpdate(prevProps : SearchPageProps) {
+    shouldComponentUpdate(prevProps : SearchPageProps) : boolean {
         let prevParams = prevProps.appState.searchParams;
         let currentParams = this.props.appState.searchParams;
         let prevResults = prevProps.appState.searchResult;
@@ -31,7 +32,7 @@ class SearchPage extends React.Component<SearchPageProps> {
     }
 
     allowExpand : boolean = true;
-    fetchAdditionalPage(searchParams : SearchParams) {
+    fetchAdditionalPage(searchParams : SearchParams) : void {
             if (this.allowExpand && !searchParams.loading){
                 this.allowExpand = false;
                 store.dispatch(setPage(searchParams.page + 1));
@@ -41,7 +42,7 @@ class SearchPage extends React.Component<SearchPageProps> {
         }
     }
 
-    render(){    
+    render() : JSX.Element {    
         let searchParams = this.props.appState.searchParams;
         let searchResult = this.props.appState.searchResult;
         return (

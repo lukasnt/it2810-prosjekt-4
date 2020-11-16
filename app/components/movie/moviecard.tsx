@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { View } from 'react-native';
-import { Avatar, Button, Card, Paragraph, ProgressBar, Text, Title, TouchableRipple } from 'react-native-paper';
+import { Card, Paragraph, ProgressBar, TouchableRipple } from 'react-native-paper';
 
 export interface MovieCardProps {
     tconst : string;
@@ -47,6 +47,7 @@ const MovieCard : React.FunctionComponent<MovieCardProps> = ({ tconst, title, im
 
 export default MovieCard;
 
+// Function to get color of rating-number
 export function getRatingColor(rating : number) : string {
     if (rating > 7.5)
         return "green";

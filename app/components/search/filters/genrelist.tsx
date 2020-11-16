@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppState } from '../../../redux/store';
 import { SearchParams } from '../../../redux/reducers/searchparams';
 import { setGenres } from '../../../redux/actions/searchparams';
-import { Button, Checkbox, Subheading } from 'react-native-paper';
+import { Button, Checkbox } from 'react-native-paper';
 import { View } from 'react-native';
 
 export interface FilterProps {

@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { SearchParams } from '../../../redux/reducers/searchparams';
 import { AppState } from '../../../redux/store';
 import { setOrderField } from '../../../redux/actions/searchparams';
-import { Button, Menu, RadioButton, Text } from 'react-native-paper';
-import { View, StyleSheet, Modal } from 'react-native';
+import { Button, RadioButton } from 'react-native-paper';
+import { View } from 'react-native';
 
 interface OrderSelectProps {
     orderLabels: Array<string>;

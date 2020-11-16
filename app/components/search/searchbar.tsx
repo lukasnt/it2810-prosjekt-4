@@ -16,7 +16,6 @@ const SearchBar : React.FunctionComponent = () => {
     // When search is submitted the query in searchParams in global state is updated
     function searchMovies() {
         dispatch(setQuery(text));
-        console.log("123");
     }
 
     return (

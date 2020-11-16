@@ -38,15 +38,7 @@ class SearchPageHeader extends React.Component<SearchPageHeaderProps> {
         }
     }
 
-    /*
-    isCloseToBottom({layoutMeasurement, contentOffset, contentSize} : NativeScrollEvent) {
-        const paddingToBottom = 20;
-        return layoutMeasurement.height + contentOffset.y >=
-          contentSize.height - paddingToBottom;
-    };
-    */
-
-    render() {
+    render() : JSX.Element {
         return (
             <View>
                 <GenreList filtertype={this.filterType} filters={this.filterValues}/>
@@ -58,10 +50,8 @@ class SearchPageHeader extends React.Component<SearchPageHeaderProps> {
     }
 }
 
-
 function mapStateToProps(state : AppState) : SearchPageHeaderProps {
     return { appState: state };
 }
-
 
 export default connect(mapStateToProps)(SearchPageHeader);
