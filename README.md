@@ -3,13 +3,13 @@
 ## Hvordan kjøre appen?
 
 ### 1. Installere avhengigheter
-Kjør følgende kommando i terminalvinduet når man er under /app:
-
-`npm install`
-
 Husk å ha expo installert globalt på maskinen. Hvis det ikke er det, kjør følgende kommando i terminalen:
 
 `npm install expo-cli --global`
+
+Kjør følgende kommando i terminalvinduet når man er under /app:
+
+`npm install`
 
 ### 2. Starte Expo
 Kjøre følgende kommando i terminalvinduet (også under /app):
