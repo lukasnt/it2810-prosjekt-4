@@ -51,7 +51,6 @@ export async function executeSearch(state : SearchParams) : Promise<void> {
         .then(res => res.json())
         .then(data => {
             if (data.callID === callID) {
-                console.log(currentPage);
                 if (currentPage > 1)
                   store.dispatch(appendSearchResult(data.result));
                 else

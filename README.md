@@ -60,3 +60,7 @@ Den manuelle e2e testingen foregår ved at man manuelt kjører appen slik som vi
 * Sjekke at endringen av sortering fungerer. Her endrer man til «release» (Dette gjør man etter at man har satt queryet). Her forventes man å få batman filmer som ikke enda å ha kommet ut først.
 * Sjekke at endring av sorterings-retning fungerer. Her endrer man til pil opp. Det forventes at det skal nå komme gamle "batman" filmer.
 * Sjekke at filtrering fungerer. Først endrer man de andre instillingene slik det var når appen startet. Deretter setter man filterne til "Action" og "Adventure". Her forventes det selvføgelig at alle filmene ihvertfall har sjangeren "Action" og "Adventure".
+
+
+## Andre Opplysininger
+Hvis det kommer print i konsollet om VirtualizedList, er dette ikke en error eller warning, men kun en opplysning. Dette forklarer hvordan man skal lage komponentene i en FlatList, og dette er tilfredstilt i appen i tillegg til at ytelsen er god i praksis. Men opplysningen vil som regel alltid komme opp i konsollen når listen blir lang nok på development mode.
