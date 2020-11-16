@@ -7,13 +7,17 @@ Kjør følgende kommando i terminalvinduet når man er under /app:
 
 `npm install`
 
+Husk å ha expo installert globalt på maskinen. Hvis det ikke er det, kjør følgende kommando i terminalen:
+
+`npm install expo-cli --global`
+
 ### 2. Starte Expo
 Kjøre følgende kommando i terminalvinduet (også under /app):
 
 `expo start`
 
 ### 3. Kjøre på mobilen
-Deretter skann QR koden som kommer opp med den mobilen som det skal kjøres på. 
+Deretter skann QR koden med mobilen og kjør åpne linken som kommer opp i expo-appen. (Husk å ha expo-appen installert på mobilen)
 
 (Det tar sikkert litt tid før alt lastes inn)
 

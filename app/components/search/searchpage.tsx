@@ -38,7 +38,6 @@ class SearchPage extends React.Component<SearchPageProps> {
                 store.dispatch(setPage(searchParams.page + 1));
                 // Don't want it to be possible to get addditional pages until 2.5 second
                 setTimeout(() => { this.allowExpand = true; }, 2500);
-            console.log("123");
         }
     }
 
