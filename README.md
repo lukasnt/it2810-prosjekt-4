@@ -17,12 +17,12 @@ Kjøre følgende kommando i terminalvinduet (også under /app):
 `expo start`
 
 ### 3. Kjøre på mobilen
-Deretter skann QR koden med mobilen og kjør åpne linken som kommer opp i expo-appen. (Husk å ha expo-appen installert på mobilen)
+Deretter skann QR koden med mobilen og åpne linken som kommer opp i expo-appen. (Husk å ha expo-appen installert på mobilen og at mobilen og pcen er på samme lokalnett)
 
 (Det tar sikkert litt tid før alt lastes inn)
 
 ### 4. Production mode
-For enda bedre ytelse kan man også kjøre i production mode (Dette er ikke nødvendig da, men blir litt kjappere)
+For enda bedre ytelse kan man også kjøre i production mode, som er et valg på expo-app-konsollen i nettleseren (Dette er ikke nødvendig da, men blir litt kjappere)
 
 
 ## React Native
